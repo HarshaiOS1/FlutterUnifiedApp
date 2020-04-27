@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:unifiedflutterapp/ViewModel/SearchViewModel.dart';
+import 'package:unifiedflutterapp/Widgets/ListViewClass.dart';
 
 class SearchView extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class SearchView extends StatefulWidget {
 class _SearchView extends State<SearchView> {
 
   final TextEditingController _filter = new TextEditingController();
-
+  var didTextChange = false;
   Icon _searchIcon = new Icon(Icons.search);
   Widget _appBarTitle = new Text('What are you looking for?',
     style: TextStyle(fontWeight: FontWeight.w100));
@@ -49,6 +50,9 @@ class _SearchView extends State<SearchView> {
 //      print(_filter.text);
 //      var result = SearchViewModel().getSearchResult(_filter.text);
 //      ListViewClass().getSearchResult(_filter.text);
+      setState(() {
+        didTextChange = true;
+    });
     }
   }
 
@@ -75,70 +79,11 @@ class _SearchView extends State<SearchView> {
         )
       ],
     ),
-    body: SafeArea(
-        child: ListViewClass().build(context)
-        ),
-      );
+    body: didTextChange ? ListViewClass(_filter.text) : CircularProgressIndicator(),
+
+//    SafeArea(
+//        child: ListViewClass().build(context),
+//          ),
+        );
     }
   }
-
-// ignore: must_be_immutable
-class ListViewClass extends StatelessWidget {
-  String searchStr = "India";
-  GoogleResponse apiResponse;
-
-//  ListViewClass().addListener(_listener);
-
-  void _listener() {
-    print('Model changed!');
-  }
-
-  void getSearchResult(String searchString) {
-//    apiResponse = await SearchViewModel().getSearchResult(searchString);
-//    print(apiResponse);
-    searchStr = searchString;
-
-  }
-
-  ListView _jobsListView(data) {
-    return ListView.builder(
-        itemCount: (data as GoogleResponse).items.length,
-        itemBuilder: (context, index) {
-          return _tile((data as GoogleResponse).items[index].title, index);
-        });
-  }
-
-//  ListTile _tile(String title, IconData image) => ListTile(
-  ListTile _tile(String title, int index) => ListTile(
-    title: Text(title,
-        style: TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 20,
-          backgroundColor: Colors.black12
-        )),
-//    subtitle: Text(subtitle),
-//    leading: Icon(
-//      icon,
-//      color: Colors.blue[500],
-//    ),
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    if (searchStr != null) {
-     return FutureBuilder<GoogleResponse>(
-        future: SearchViewModel().getSearchResult(searchStr),
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return _jobsListView(snapshot.data);
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return CircularProgressIndicator();
-        },
-      );
-    }
-    return CircularProgressIndicator();
-  }
-
-}

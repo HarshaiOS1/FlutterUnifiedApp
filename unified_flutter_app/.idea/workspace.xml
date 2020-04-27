@@ -287,6 +287,7 @@
       <change afterPath="$PROJECT_DIR$/lib/ShopListViewController.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/TrackOrderViewController.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/ViewModel/SearchViewModel.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Widgets/ListViewClass.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/loginViewController.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/utils.dart" afterDir="false" />
@@ -322,7 +323,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1aFsCe9x0MKr2CzILdlcKDalPgl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -511,5 +512,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/RegistrationViewContoller.dart</url>
+          <line>109</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/Widgets/ListViewClass.dart</url>
+          <line>7</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
